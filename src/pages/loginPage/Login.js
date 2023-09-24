@@ -1,10 +1,23 @@
 import React from "react";
 import "./login.scss";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+    const {loginData} = useSelector((state) => state.data)
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const navigate = useNavigate();
+  const onSubmit = (data) => {
+    console.log(data)
+    const newArr = loginData.filter(item => (
+        item.name === data.name && +item.password === +data.password ?
+        navigate('/home')
+        :
+        null
+        
+    ))
+  }
 
   return (
     <div className="login">
@@ -17,11 +30,11 @@ const Login = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="user-login">
             <img alt="img" src="user.svg"/>
-            <input {...register("userName")} />
+            <input {...register("name")} />
             </div>
             <div className="user-password">
              <img alt="img" src="password.svg"/>
-             <input type={"password"} {...register("userPassword")} />
+             <input type={"password"} {...register("password")} />
             </div>
            
           <button type="submit">Giriş Yap</button>
