@@ -22,14 +22,18 @@ a{
         display: flex;
 
         .layout-menu {
-            width: 10%;
+            width: 12%;
             margin-left: 20px;
-            padding: 20px 0;
+         
+            border-right: 1px solid #8e8c8c ;
+            margin-right: 20px;
+            margin-top: 30px;
             
         }
         .layout-children {
-            border-left: 1px solid $soft-color ;
-            opacity: 0.5;
+            margin-top: 30px;
+            width: 100%;
+           
         }
     }
 }

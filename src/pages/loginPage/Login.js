@@ -3,6 +3,7 @@ import "./login.scss";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const Login = () => {
     const {loginData} = useSelector((state) => state.data)
@@ -10,11 +11,13 @@ const Login = () => {
   const navigate = useNavigate();
   const onSubmit = (data) => {
     console.log(data)
-    const newArr = loginData.filter(item => (
+    loginData.every(item => (
         item.name === data.name && +item.password === +data.password ?
         navigate('/home')
         :
-        null
+        Swal.fire(
+            'Kullanıcı Adı veya Şifre Yanlış...'
+          )
         
     ))
   }
@@ -24,17 +27,17 @@ const Login = () => {
       <div className="login-form">
         <div className="login-title">
           <img alt="img" src="logo.png" />
-          <h2>Welcome AdminD</h2>
+          <h2>AdminD'ye Giriş Yap</h2>
         </div>
         <div className="login-auth">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="user-login">
             <img alt="img" src="user.svg"/>
-            <input {...register("name")} />
+            <input required {...register("name")} />
             </div>
             <div className="user-password">
              <img alt="img" src="password.svg"/>
-             <input type={"password"} {...register("password")} />
+             <input required type={"password"} {...register("password")} />
             </div>
            
           <button type="submit">Giriş Yap</button>
