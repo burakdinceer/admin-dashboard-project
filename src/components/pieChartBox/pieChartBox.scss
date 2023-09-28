@@ -1,0 +1,37 @@
+.pieChart{
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    h1{
+        font-size: 28px;
+     
+    }
+    .chart{
+        width: 100%;
+    }
+    .options{
+       display: flex;
+      
+        .main{
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           font-size: 14px;
+            .title{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-left: 10px;
+                .dot{
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                   
+                }
+            }
+        }
+       
+    }
+}
